@@ -1,0 +1,49 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (4.2.11.1)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    childprocess (1.0.1)
+      rake (< 13.0)
+    concurrent-ruby (1.1.5)
+    faraday (0.15.4)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.13.1)
+      faraday (>= 0.7.4, < 1.0)
+    gli (2.18.1)
+    hashie (3.6.0)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
+    minitest (5.10.3)
+    multipart-post (2.1.1)
+    rake (12.3.0)
+    rubyzip (1.2.3)
+    selenium-webdriver (3.142.3)
+      childprocess (>= 0.5, < 2.0)
+      rubyzip (~> 1.2, >= 1.2.2)
+    slack-ruby-client (0.14.3)
+      activesupport
+      faraday (>= 0.9)
+      faraday_middleware
+      gli
+      hashie
+      websocket-driver
+    thread_safe (0.3.6)
+    tzinfo (1.2.5)
+      thread_safe (~> 0.1)
+    websocket-driver (0.7.1)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  selenium-webdriver
+  slack-ruby-client
+
+BUNDLED WITH
+   2.0.2
