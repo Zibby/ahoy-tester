@@ -1,13 +1,14 @@
 #!/usr/bin/env ruby
 
-require "selenium-webdriver"
-require "slack"
+require 'selenium-webdriver'
+require 'slack'
 # Load all files from lib
 require 'require_all'
 require_all './lib'
 
+# Arh Matey
 class AhoyTest
-  attr_accessor :browser,:root_url
+  attr_accessor :browser, :root_url
 
   include Login
   include CheckProfile
@@ -17,9 +18,9 @@ class AhoyTest
   def initialize
     @root_url = 'https://ahoy.alliantsdev.com'
     @browser = Selenium::WebDriver.for(
-      :remote, 
-      :url => "http://selenium-hub:4444/wd/hub",
-      :desired_capabilities => {:browserName => "chrome"}
+      :remote,
+      url: 'http://selenium-hub:4444/wd/hub',
+      desired_capabilities: { browserName: 'chrome' }
     )
   end
 end
@@ -36,14 +37,15 @@ loop do
     steps = %w[login check_profile org_check logout]
     steps.each do |step|
       puts 'in step loop'
-      begin 
+      begin
         TC.send(step)
-      rescue
-        TC.error(nil, "Error sending #{step}")
-        return
+      rescue StandardError => e
+        TC.error(e, "Error sending #{step}")
+        break
       end
     end
-  rescue
+  rescue StandardError => e
+    TC.error(e, 'Undefined Error')
     next
   end
   puts 'sleeping'
