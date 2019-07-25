@@ -3,7 +3,8 @@
 require "selenium-webdriver"
 require "slack"
 # Load all files from lib
-Dir[File.join(__dir__, 'lib', '*.rb')].each { |file| require file }
+require 'require-all'
+require_all './lib'
 
 class AhoyTest
   attr_accessor :browser,:root_url
