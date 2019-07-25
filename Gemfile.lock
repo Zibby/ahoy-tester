@@ -20,6 +20,7 @@ GEM
     minitest (5.10.3)
     multipart-post (2.1.1)
     rake (12.3.0)
+    require_all (2.0.0)
     rubyzip (1.2.3)
     selenium-webdriver (3.142.3)
       childprocess (>= 0.5, < 2.0)
@@ -42,6 +43,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  require_all
   selenium-webdriver
   slack-ruby-client
 

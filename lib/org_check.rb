@@ -9,7 +9,7 @@ module OrgCheck
 
     desirables = %w[Organisations logo Name Actions]
 
-    unless desirables.all { |d| browser.page_source.include? d }
+    unless desirables.all? { |d| browser.page_source.include? d }
       error(nil, 'org page content wrong')
     end
   rescue StandardError => e
