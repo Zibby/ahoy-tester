@@ -3,8 +3,7 @@ require_relative './error'
 # Org Check
 module OrgCheck
   def org_check
-    @browser.navigate.to 'https://ahoy.alliantsdev.com'
-    @browser.find_element(css: '.tab-item').click
+    @browser.navigate.to 'https://ahoy.alliantsdev.com/organisations'
     sleep 1
 
     desirables = %w[Organisations logo Name Actions]
