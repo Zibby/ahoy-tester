@@ -2,9 +2,8 @@
 
 require "selenium-webdriver"
 require "slack"
-require_relative "./lib/check_profile"
-require_relative "./lib/login"
-require_relative "./lib/logout"
+# Load all files from lib
+Dir[File.join(__dir__, 'lib', '*.rb')].each { |file| require file }
 
 class AhoyTest
   attr_accessor :browser,:root_url
@@ -12,6 +11,7 @@ class AhoyTest
   include Login
   include CheckProfile
   include Logout
+  include OrgCheck
 
   def initialize
     @root_url = 'https://ahoy.alliantsdev.com'
@@ -32,7 +32,7 @@ puts 'browsing to root url'
 TC.browser.navigate.to TC.root_url
 loop do
   begin
-    steps = %w[login check_profile logout]
+    steps = %w[login check_profile org_check logout]
     steps.each do |step|
       puts 'in step loop'
       begin 
