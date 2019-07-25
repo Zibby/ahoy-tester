@@ -3,7 +3,7 @@
 require "selenium-webdriver"
 require "slack"
 # Load all files from lib
-require 'require-all'
+require 'require_all'
 require_all './lib'
 
 class AhoyTest
