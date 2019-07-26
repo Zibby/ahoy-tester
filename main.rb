@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 require 'selenium-webdriver'
 require 'slack'
@@ -98,9 +99,9 @@ class WebsiteTest
     puts @action_arg
     sleep 1
     unless @action_arg.all? { |d| @browser.page_source.include? d }
-      puts "missing text"
+      puts 'missing text'
     end
-    puts "text validated"
+    puts 'text validated'
   end
 end
 
