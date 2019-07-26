@@ -1,0 +1,15 @@
+config:
+  slack: nil
+  local: true
+  testmode: true
+steps:
+  - goto_google:
+      actions:
+        - navigate_to: 'http://google.com'
+        - find_element:
+            class: name
+            value: q
+        - send_keys: the matrix
+        - hit_enter:
+        - validate_text:
+          - Neo
