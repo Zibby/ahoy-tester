@@ -66,7 +66,7 @@ class WebsiteTest
 
   def alert_me(err, action_type, action_arg)
     puts "unable to process #{action_type} with #{action_arg} because #{err}"
-    send_slack(err, action_type, action_arg) if config['slack']
+    send_slack(err, action_type, action_arg) if @config['slack']
   end
 
   def init_slack
@@ -78,7 +78,7 @@ class WebsiteTest
 
   def send_slack(err, action_type, action_arg)
     @slack.chat_postMessage(
-      channel: @configp['slack']['channel'],
+      channel: @config['slack']['channel'],
       text: "unable to process #{action_type} with #{action_arg} because #{err}",
       as_user: true
     )
