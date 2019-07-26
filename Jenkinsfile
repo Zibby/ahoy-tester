@@ -11,11 +11,6 @@ pipeline {
         git 'https://github.com/Zibby/ahoy-tester'
       }
     }
-    stage('Test') {
-      steps{
-        sh 'rake test'
-      }
-    }
     stage('Build Image') {
       steps {
         script {
