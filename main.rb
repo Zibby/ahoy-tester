@@ -9,7 +9,11 @@ require 'yaml'
 class WebsiteTest
   def initialize
     load_yaml
+    activate
     @browser = choose_browser
+  end
+
+  def activate
     if @config['testmode'] == true
       runsteps
     else
@@ -18,7 +22,6 @@ class WebsiteTest
         sleep 30
       end
     end
-    init_slack if @config['slack']
   end
 
   def choose_browser
@@ -37,6 +40,7 @@ class WebsiteTest
     yaml = YAML.load_file(ARGV[0])
     @steps = yaml['steps']
     @config = yaml['config']
+    init_slack if @config['slack']
   end
 
   def runsteps
