@@ -1,5 +1,4 @@
 config:
-  slack: nil
   local: true
   testmode: true
 steps:

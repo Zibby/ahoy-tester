@@ -9,8 +9,8 @@ require 'yaml'
 class WebsiteTest
   def initialize
     load_yaml
-    activate
     @browser = choose_browser
+    activate
   end
 
   def activate
@@ -26,8 +26,10 @@ class WebsiteTest
 
   def choose_browser
     if @config['local'] == true
+      puts 'using local chrome driver'
       Selenium::WebDriver.for(:chrome)
     else
+      puts 'using selenium hub'
       Selenium::WebDriver.for(
         :remote,
         url: 'http://selenium-hub:4444/wd/hub',
