@@ -11,7 +11,6 @@ RUN bundle install
 RUN apt-get update
 
 COPY main.rb ${APP_HOME}
-COPY lib/ "${APP_HOME}/lib/"
 COPY testing.yml ${APP_HOME}/
 
 CMD ["bundle", "exec", "/app/main.rb", "./config.yml"]
