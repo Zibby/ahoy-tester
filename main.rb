@@ -59,8 +59,8 @@ class WebsiteTest
     end
   end
 
-  def alert_me(error, action_type, action_arg)
-    puts "unable to process #{action_type} with #{action_arg} because #{error}"
+  def alert_me(err, action_type, action_arg)
+    puts "unable to process #{action_type} with #{action_arg} because #{err}"
   end
 
   ## Action Types ##
