@@ -18,6 +18,7 @@ class WebsiteTest
         sleep 30
       end
     end
+    init_slack if @config['slack']
   end
 
   def choose_browser
@@ -61,7 +62,7 @@ class WebsiteTest
 
   def alert_me(err, action_type, action_arg)
     puts "unable to process #{action_type} with #{action_arg} because #{err}"
-    send_slack(err, action_type, action_arg)
+    send_slack(err, action_type, action_arg) if config['slack']
   end
 
   def init_slack
