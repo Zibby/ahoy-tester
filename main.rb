@@ -61,6 +61,22 @@ class WebsiteTest
 
   def alert_me(err, action_type, action_arg)
     puts "unable to process #{action_type} with #{action_arg} because #{err}"
+    send_slack(err, action_type, action_arg)
+  end
+
+  def init_slack
+    Slack.configure do |config|
+      config.token = @config['slack']['key']
+    end
+    @slack = Slack::Web::Client.new
+  end
+
+  def send_slack(err, action_type, action_arg)
+    @slack.chat_postMessage(
+      channel: @configp['slack']['channel'],
+      text: "unable to process #{action_type} with #{action_arg} because #{err}",
+      as_user: true
+    )
   end
 
   ## Action Types ##
