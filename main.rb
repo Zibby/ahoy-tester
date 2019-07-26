@@ -62,7 +62,7 @@ class WebsiteTest
     begin
       send(action_type)
     rescue StandardError => e
-      alert_me(e, action_type, @action_arg)
+      alert_me(e, action_type, @action_arg) unless action_type == 'send_keys'
     end
   end
 
