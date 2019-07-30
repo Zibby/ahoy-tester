@@ -78,12 +78,28 @@ class WebsiteTest
     @slack = Slack::Web::Client.new
   end
 
+  def take_screenshot
+    @browser.save_screenshot('./screenshot.png')
+  end
+
+  def upload_screenshot
+    @slack.files_upload(
+      channels: @config['slack']['channel'],
+      as_user: true,
+      file: Faraday::UploadIO.new('./screenshot.png', 'image/png'),
+      title: 'error',
+      filename: 'error.screenshot.png'
+    )
+  end
+
   def send_slack(err, action_type, action_arg)
     @slack.chat_postMessage(
       channel: @config['slack']['channel'],
-      text: "unable to process #{action_type} with #{action_arg} because #{err}",
+      text: "Error on #{action_type} with #{action_arg} because #{err}",
       as_user: true
     )
+    take_screenshot
+    send_screenshot
   end
 
   ## Action Types ##
