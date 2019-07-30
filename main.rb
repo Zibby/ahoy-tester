@@ -138,7 +138,7 @@ class WebsiteTest
     puts @action_arg
     sleep 1
     unless @action_arg.all? { |d| @browser.page_source.include? d }
-      alert_me(nil, 'missing_text', @action_arg)
+      alert_me('text not found in source', 'missing_text', @action_arg)
     end
     puts 'text validated'
   end
