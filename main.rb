@@ -19,7 +19,7 @@ class WebsiteTest
     else
       loop do
         runsteps
-        sleep 30
+        sleep @config['sleep']
       end
     end
   end
