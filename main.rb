@@ -99,7 +99,7 @@ class WebsiteTest
       as_user: true
     )
     take_screenshot
-    send_screenshot
+    upload_screenshot
   end
 
   ## Action Types ##
@@ -138,7 +138,7 @@ class WebsiteTest
     puts @action_arg
     sleep 1
     unless @action_arg.all? { |d| @browser.page_source.include? d }
-      puts 'missing text'
+      alert_me(nil, 'missing_text', @action_arg)
     end
     puts 'text validated'
   end
