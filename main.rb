@@ -40,7 +40,7 @@ class WebsiteTest
       Selenium::WebDriver.for(
         :remote,
         url: 'http://selenium-hub:4444/wd/hub',
-        desired_capabilities: { browserName: 'firefox' }
+        desired_capabilities: { browserName: 'chrome' }
       )
     end
   end
