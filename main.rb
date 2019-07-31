@@ -18,6 +18,13 @@ class WebsiteTest
       runsteps
     else
       loop do
+        choose_browser
+        begin
+          @browser.current_url
+        rescue StandardError => e
+          puts e
+          @browser = choose_browser
+        end
         runsteps
         sleep @config['sleep']
       end
@@ -33,7 +40,7 @@ class WebsiteTest
       Selenium::WebDriver.for(
         :remote,
         url: 'http://selenium-hub:4444/wd/hub',
-        desired_capabilities: { browserName: 'chrome' }
+        desired_capabilities: { browserName: 'firefox' }
       )
     end
   end
