@@ -9,7 +9,7 @@ require 'yaml'
 class WebsiteTest
   def initialize
     load_yaml
-    @browser = choose_browser
+    choose_browser
     activate
   end
 
@@ -18,12 +18,11 @@ class WebsiteTest
       runsteps
     else
       loop do
-        choose_browser
         begin
           @browser.current_url
         rescue StandardError => e
           puts e
-          @browser = choose_browser
+          choose_browser
         end
         runsteps
         sleep @config['sleep']
@@ -31,8 +30,8 @@ class WebsiteTest
     end
   end
 
-  def choose_browser
-    if @config['local'] == true
+  def choose_browser 
+    @browser = if @config['local'] == true
       puts 'using local chrome driver'
       Selenium::WebDriver.for(:chrome)
     else
