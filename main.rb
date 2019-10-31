@@ -148,6 +148,11 @@ class WebsiteTest
     end
     puts 'text validated'
   end
+
+  def pause 
+    length = @action_arg.nil? ? 5 : @action_arg
+    sleep length
+  end
 end
 
 WebsiteTest.new
