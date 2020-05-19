@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-source 'http://rubygems.org'
+source "http://rubygems.org"
 
-gem 'selenium-webdriver'
-gem 'slack-ruby-client'
+gem "selenium-webdriver"
+gem "slack-ruby-client"
