@@ -155,5 +155,8 @@ class WebsiteTest
   end
 end
 
+puts "sleeping"
+sleep 20
+puts "awake"
 WebsiteTest.new
 puts "test_complete"
